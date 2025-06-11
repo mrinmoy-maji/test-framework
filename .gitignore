@@ -12,6 +12,7 @@ allure-results/
 
 # Playwright test results
 test-results/
+reports/
 
 # Node.js dependencies (if applicable)
 node_modules/
