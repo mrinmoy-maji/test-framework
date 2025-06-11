@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.tests.ExampleApiTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-06-10T06:28:53" hostname="Mrinmoys-MBP" time="132.012">
-  <properties/>
-  <testcase name="testGetUserWithOkHttp" classname="com.example.tests.ExampleApiTest" time="132.012"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
