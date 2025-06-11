@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '11'
+
+def testngVersion = '7.10.2'
+def restAssuredVersion = '5.4.0'
+def jacksonVersion = '2.17.1'
+def allureVersion = '2.24.0'
+// def cucumberVersion = '7.15.0' // Uncomment for BDD
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.testng:testng:${testngVersion}"
+    implementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation 'org.json:json:20240303'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    testImplementation "io.qameta.allure:allure-testng:${allureVersion}"
+    // testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    // testImplementation "io.cucumber:cucumber-testng:${cucumberVersion}"
+}
+
+test {
+    useTestNG()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+

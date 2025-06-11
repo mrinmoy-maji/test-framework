@@ -1,23 +1,20 @@
 import { test, expect } from '@playwright/test';
-import { takeScreenshot } from './helpers/screenshotHelper';
 
 test.beforeEach(async ({ page }) => {
-    await page.pause();
-    await page.goto('https://example.com');
+  await page.goto('https://demo.playwright.dev/todomvc/');
 });
 
-test('example test case 1', async ({ page }) => {
-    const title = await page.title();
-    expect(title).toBe('Example Domain');
-    await takeScreenshot(page, 'example-test-case-1.png');
+test('should allow adding a new todo item', async ({ page }) => {
+  await page.locator('.new-todo').fill('Buy groceries');
+  await page.locator('.new-todo').press('Enter');
+  const todoText = await page.locator('.todo-list li').textContent();
+  expect(todoText).toContain('Buy groceries');
 });
 
-test('example test case 2', async ({ page }) => {
-    const heading = await page.locator('h1').textContent();
-    expect(heading).toBe('Example Domain');
-    await takeScreenshot(page, 'example-test-case-2.png');
-});
-
-test.afterEach(async ({ page }) => {
-    // Additional teardown logic can be added here if needed
+test('should allow marking a todo item as completed', async ({ page }) => {
+  await page.locator('.new-todo').fill('Buy groceries');
+  await page.locator('.new-todo').press('Enter');
+  await page.locator('.todo-list li .toggle').click();
+  const completedClass = await page.locator('.todo-list li').getAttribute('class');
+  expect(completedClass).toContain('completed');
 });
