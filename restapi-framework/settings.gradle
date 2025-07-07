@@ -1,2 +1,5 @@
 rootProject.name = 'restapi-framework'
+include 'api-test'
+include 'api-core'
+include 'common'
 
